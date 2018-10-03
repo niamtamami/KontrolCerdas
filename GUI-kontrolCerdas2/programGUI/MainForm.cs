@@ -31,13 +31,13 @@ namespace programGUI
         Random rnd = new Random();
         
        
-        RollingPointPairList list1 = new RollingPointPairList(1200);
-        RollingPointPairList list2 = new RollingPointPairList(1200);
-        RollingPointPairList list3 = new RollingPointPairList(1200);
-        RollingPointPairList list4 = new RollingPointPairList(1200);
-        RollingPointPairList list5 = new RollingPointPairList(1200);
-        RollingPointPairList list6 = new RollingPointPairList(1200);
-        RollingPointPairList list7 = new RollingPointPairList(1200);
+        RollingPointPairList list1 = new RollingPointPairList(2400);
+        RollingPointPairList list2 = new RollingPointPairList(2400);
+        RollingPointPairList list3 = new RollingPointPairList(2400);
+        RollingPointPairList list4 = new RollingPointPairList(2400);
+        RollingPointPairList list5 = new RollingPointPairList(2400);
+        RollingPointPairList list6 = new RollingPointPairList(2400);
+        RollingPointPairList list7 = new RollingPointPairList(2400);
 
         System.Reflection.PropertyInfo list1item = null;
         System.Reflection.PropertyInfo list2item = null;
@@ -205,24 +205,35 @@ namespace programGUI
 
             richTextBoxDataTerima.AppendText(terima + "\n");
             Data = terima.Split(delimiterChars);
-            Console.WriteLine(Data.Length);
+            try {
+                //Console.WriteLine(Data.Length);
+                //Console.WriteLine(Data[0]);
+                //Console.WriteLine(Data[1]);
+                //Console.WriteLine(Data[2]);
+            }
+            catch { }
             byte i;
             string header;
             try
             {
                 for (i = 0; i < Data.Length; i++)
                 {
+                    
                     header = Data[i].Substring(0, 1);
+                    
                     switch (header)
                     {
                         case "R":
-                            setPoint = int.Parse(Data[i].Substring(1)); // merah
+                            setPoint = int.Parse(Data[i].Substring(1));
+                            
                             break;
                         case "S":
-                            kecepatanMotor = int.Parse(Data[i].Substring(1)); // biru
+                            kecepatanMotor = int.Parse(Data[i].Substring(1));
+                            
                             break;
                         case "P":
                             PWM = int.Parse(Data[i].Substring(1));
+                            
                             break;
                         case "p":
                             proporsional = double.Parse(Data[i].Substring(1));
